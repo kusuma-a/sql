@@ -7,19 +7,19 @@ import java.sql.PreparedStatement;
 public class Jdbctask {
 
     public static void main(String[] args) {
-        // Step 1: Database connection details
-        String url = "jdbc:mysql://localhost:3306/company"; // Replace 'company' with your DB name
-        String username = "root"; // Replace with your DB username
-        String password = ""; // Replace with your DB password
 
-        // Step 2: SQL Insert Query
+        String url = "jdbc:mysql://localhost:3306/company"; 
+        String username = "root";
+        String password = "priya1221"; 
+
+        
         String insertQuery = "INSERT INTO employees (empcode, empname, empage, esalary) VALUES (?, ?, ?, ?)";
 
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
 
-            // Correct data type usage
+    
             Object[][] employeeData = {
                     {101, "Jenny", 25, 10000},
                     {102, "Jacky", 30, 20000},
@@ -29,12 +29,12 @@ public class Jdbctask {
             };
 
             for (Object[] emp : employeeData) {
-                preparedStatement.setInt(1, (int) emp[0]); // empcode
-                preparedStatement.setString(2, (String) emp[1]); // empname
-                preparedStatement.setInt(3, (int) emp[2]); // empage
-                preparedStatement.setDouble(4, (double) emp[3]); // esalary
+                preparedStatement.setInt(1, (int) emp[0]); 
+                preparedStatement.setString(2, (String) emp[1]); 
+                preparedStatement.setInt(3, (int) emp[2]); 
+                preparedStatement.setDouble(4, (double) emp[3]); 
 
-                preparedStatement.executeUpdate(); // Execute the query
+                preparedStatement.executeUpdate(); 
             }
             System.out.println("Data inserted successfully!");
 
